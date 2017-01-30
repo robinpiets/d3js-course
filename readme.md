@@ -1,10 +1,8 @@
 #D3JS Course @ Codaisseur (2017-01-30)
 
-
 ## Result:
 
-![alt tag](https://github.com/robinpiets/d3js-course/blob/master/img/d3js-first.gif?raw=true)
-![alt tag](https://github.com/robinpiets/d3js-course/blob/master/img/d3js-second.gif?raw=true)
+![alt tag](https://github.com/robinpiets/d3js-course/blob/master/img/d3js-result.gif?raw=true)
 
 Examples:
 1. https://github.com/d3/d3/wiki/Gallery
