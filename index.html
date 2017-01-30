@@ -62,15 +62,14 @@
 	data.forEach(function(d) {
 		// console.log( Date.parse( d.year ) );
 		d.date = parseDate( d.year );
-		d.value = +d.value;
-		d.class = d.category;
+		d.value = +d.value; // + converts it to an int, optimized version
+		// d.class = d.category;
 	});
 
 
 	var table = d3.select('#table').append('table');
 	// var tbody = d3.select('#table').append('tbody'); // var tbody return the appended tbody
 	var	formatDate = d3.timeFormat("%Y-%m");
-
 
 	var tbody = table.append('tbody')
 	var tr = tbody.selectAll('tr')
@@ -82,9 +81,12 @@
 	var className = 'test-' + Math.random();
 
 	tr.append('td').html(function(d) { return formatDate( d.date ); });
+	// debugger;
 	tr.append('td').html(function(d) { return d.category }).classed( 'foo', function() { return Math.random() > 0.5; } );
 	// tr.append('td').html(function(d) { return d.category }).classed( className, true  );
+	// debugger;
 	tr.append('td').html(function(d) { return d.value });
+	// debugger;
 
 	var thead = table.append('thead').append('tr')
 
@@ -94,26 +96,34 @@
 
 
 	// Barchart:
-	var month_margin = {top: 20, right: 20, bottom: 70, left: 40},
-	// var month_margin = {top: 0, right: 0, bottom: 0, left: 0},
+	var month_margin = {top: 20, right: 40, bottom: 70, left: 20},
 		month_width = 900,
-		month_height = 200;
+		month_height = 400;
 
 
 	var svg = d3.select("#month").append("svg")
 		.attr("width", month_width + month_margin.left + month_margin.right)
 		.attr("height", month_height + month_margin.top + month_margin.bottom)
 		.append("g")
+		// .attr("transform", "translate(" + month_margin.left + "," + month_margin.top + ")");
 		.attr("transform", "translate(" + month_margin.left + "," + month_margin.top + ")");
 
-	var x = d3.scaleTime().range([0, month_width]).domain([data[0].date, data[data.length-1].date]);
-	var y = d3.scaleLinear().range([month_height, 0]).domain([0, d3.max(data, function(d) { return d.value; })]);
+	var maxX = data[data.length-1].date;
+	var maxX = d3.timeMonth.offset( data[data.length-1].date, +1 );
+	var maxY = d3.max(data, function(d) { return d.value; });
+	// console.log( d3.max(data, function(d) { return d.date } ) );
+	// var x = d3.scaleTime().range([0, month_width]).domain([data[0].date, data[data.length-1].date]);
+	var x = d3.scaleTime().range([0, month_width - 50]).domain([data[0].date, maxX]);
+	var y = d3.scaleLinear().range([month_height, 0]).domain([0, maxY]);
+
 
 	svg.selectAll("rect")
 		.data(data)
 		.enter().append("rect")
 		.attr("x", function(d) { return x(d.date); })
+		// .attr("x", function(d) { return x(d.date); })
 		.attr("width", 50)
+		// .attr("width", function(d) { return month_height - y(d.value); })
 		.attr("y", function(d) { return y(d.value); })
 		.attr("height", function(d) { return month_height - y(d.value); });
 
@@ -121,32 +131,30 @@
 	var yAxis = d3.axisLeft()
 		.scale(y)
 		.tickSize(-month_width) //as wide as our graph
-		.ticks(3);
-
-	svg.append("g")
-		.attr("class", "y axis")
-		.call(yAxis)
+		.ticks(5);
+	svg.append("g").attr("class", "y axis").call(yAxis)
 
 	var xAxis = d3.axisBottom()
-		 .scale(x)
-		 .tickFormat(d3.timeFormat("%Y-%m"));
+		.scale(x)
+		.tickFormat(d3.timeFormat("%Y-%m"))
+		.tickSize(-month_height) //as wide as our graph
+		.ticks();
+	svg.append("g")
+		.attr("class", "x axis")
+		.attr("transform", "translate(0," + month_height + ")")
+		.call(xAxis);
 
-	 svg.append("g")
-		 .attr("class", "x axis")
-		 .attr("transform", "translate(0," + month_height + ")")
-		 .call(xAxis)
-
-	svg.selectAll("label")
-		.data(data)
-		.enter()
-		.append("text")
-		.attr("class", "label")
-		// .style("fill", "#019875")
-		.attr("y", function(d) { return y(d.value); })
-		.attr("x", function(d) { return x(d.date); })
-		.attr("dy", "-.35em") //vertical align middle
-		.attr("dx", ".7em") //vertical align middle
-		.text(function(d){ return d.value; });
+	// svg.selectAll("label")
+	// 	.data(data)
+	// 	.enter()
+	// 	.append("text")
+	// 	.attr("class", "label")
+	// 	// .style("fill", "#019875")
+	// 	.attr("y", function(d) { return y(d.value); })
+	// 	.attr("x", function(d) { return x(d.date); })
+	// 	.attr("dy", "-.35em") //vertical align middle
+	// 	.attr("dx", ".7em") //vertical align middle
+	// 	.text(function(d){ return d.value; });
 
 
 </script>
