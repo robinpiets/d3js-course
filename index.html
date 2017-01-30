@@ -3,35 +3,35 @@
 <head>
 	<!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
 	<!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-    <link href="css/d3js.css"  rel="stylesheet">
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+	<link href="css/d3js.css"  rel="stylesheet">
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
 <div class="main">
-    <h1>Dashboard</h1>
+	<h1>Dashboard</h1>
 
-    <!-- We will add the donut and table here -->
-    <h2>Total value</h2>
-    <div class="row">
-        <div id="counter_table"></div>
-        <div id="today"></div>
-    </div>
+	<!-- We will add the donut and table here -->
+	<h2>Total value</h2>
+	<div class="row">
+		<div id="counter_table"></div>
+		<div id="today"></div>
+	</div>
 
-    <!-- We will add barchart here -->
-    <h2>Sales every month</h2>
-    <div class="row">
-        <div id="month">
-        </div>
-    </div>
+	<!-- We will add barchart here -->
+	<h2>Sales every month</h2>
+	<div class="row">
+		<div id="month">
+		</div>
+	</div>
 
-    <!-- We will add the data table here -->
-    <h2>Data</h2>
-    <div class="row">
-        <div id="table">
-        </div>
-    </div>
+	<!-- We will add the data table here -->
+	<h2>Data</h2>
+	<div class="row">
+		<div id="table">
+		</div>
+	</div>
 
 </div>
 
@@ -39,102 +39,114 @@
 
 <script>
 
-    data =
-        [
-            {year: "2013-01", value: 53, category: "pants"},
-            {year: "2013-02", value: 165, category: "pants"},
-            {year: "2013-03", value: 269, category: "pants"},
-            {year: "2013-04", value: 344, category: "pants"},
-            {year: "2013-05", value: 376, category: "shirt"},
-            {year: "2013-06", value: 410, category: "shirt"},
-            {year: "2013-07", value: 421, category: "shirt"},
-            {year: "2013-08", value: 405, category: "shirt"},
-            {year: "2013-09", value: 376, category: "shirt"},
-            {year: "2013-10", value: 359, category: "shoes"},
-            {year: "2013-11", value: 392, category: "shoes"},
-            {year: "2013-12", value: 433, category: "shoes"},
-            {year: "2014-01", value: 455, category: "shoes"},
-            {year: "2014-02", value: 478, category: "shoes"}
-        ];
+	data =
+		[
+			{year: "2013-01", value: 53, category: "pants"},
+			{year: "2013-02", value: 165, category: "pants"},
+			{year: "2013-03", value: 269, category: "pants"},
+			{year: "2013-04", value: 344, category: "pants"},
+			{year: "2013-05", value: 376, category: "shirt"},
+			{year: "2013-06", value: 410, category: "shirt"},
+			{year: "2013-07", value: 421, category: "shirt"},
+			{year: "2013-08", value: 405, category: "shirt"},
+			{year: "2013-09", value: 376, category: "shirt"},
+			{year: "2013-10", value: 359, category: "shoes"},
+			{year: "2013-11", value: 392, category: "shoes"},
+			{year: "2013-12", value: 433, category: "shoes"},
+			{year: "2014-01", value: 455, category: "shoes"},
+			{year: "2014-02", value: 478, category: "shoes"}
+		];
 
-    var parseDate = d3.timeParse("%Y-%m");
+	var parseDate = d3.timeParse("%Y-%m");
 
-    data.forEach(function(d) {
-        // console.log( Date.parse( d.year ) );
-        d.date = parseDate( d.year );
-        d.value = +d.value;
-        d.class = d.category;
-    });
-
-
-    var table = d3.select('#table').append('table');
-    // var tbody = d3.select('#table').append('tbody'); // var tbody return the appended tbody
-    var	formatDate = d3.timeFormat("%Y-%m");
+	data.forEach(function(d) {
+		// console.log( Date.parse( d.year ) );
+		d.date = parseDate( d.year );
+		d.value = +d.value;
+		d.class = d.category;
+	});
 
 
-    var tbody = table.append('tbody')
-    var tr = tbody.selectAll('tr')
-        .data(data).enter()
-        .append('tr');
-
-    // var className = 'foo';
-    // var className = function(d) { return d.category };
-    var className = 'test-' + Math.random();
-
-    tr.append('td').html(function(d) { return formatDate( d.date ); });
-    tr.append('td').html(function(d) { return d.category }).classed( 'foo', function() { return Math.random() > 0.5; } );
-    // tr.append('td').html(function(d) { return d.category }).classed( className, true  );
-    tr.append('td').html(function(d) { return d.value });
-
-    var thead = table.append('thead').append('tr')
-
-    thead.append('th').text("date");
-    thead.append('th').text("category");
-    thead.append('th').attr("class", "value").text("value");
+	var table = d3.select('#table').append('table');
+	// var tbody = d3.select('#table').append('tbody'); // var tbody return the appended tbody
+	var	formatDate = d3.timeFormat("%Y-%m");
 
 
-    // Barchart:
-    var month_margin = {top: 20, right: 20, bottom: 70, left: 40},
-    // var month_margin = {top: 0, right: 0, bottom: 0, left: 0},
-        month_width = 900,
-        month_height = 200;
+	var tbody = table.append('tbody')
+	var tr = tbody.selectAll('tr')
+		.data(data).enter()
+		.append('tr');
+
+	// var className = 'foo';
+	// var className = function(d) { return d.category };
+	var className = 'test-' + Math.random();
+
+	tr.append('td').html(function(d) { return formatDate( d.date ); });
+	tr.append('td').html(function(d) { return d.category }).classed( 'foo', function() { return Math.random() > 0.5; } );
+	// tr.append('td').html(function(d) { return d.category }).classed( className, true  );
+	tr.append('td').html(function(d) { return d.value });
+
+	var thead = table.append('thead').append('tr')
+
+	thead.append('th').text("date");
+	thead.append('th').text("category");
+	thead.append('th').attr("class", "value").text("value");
 
 
-    var svg = d3.select("#month").append("svg")
-        .attr("width", month_width + month_margin.left + month_margin.right)
-        .attr("height", month_height + month_margin.top + month_margin.bottom)
-        .append("g")
-        .attr("transform", "translate(" + month_margin.left + "," + month_margin.top + ")");
+	// Barchart:
+	var month_margin = {top: 20, right: 20, bottom: 70, left: 40},
+	// var month_margin = {top: 0, right: 0, bottom: 0, left: 0},
+		month_width = 900,
+		month_height = 200;
 
-    var x = d3.scaleTime().range([0, month_width]).domain([data[0].date, data[data.length-1].date]);
-    var y = d3.scaleLinear().range([month_height, 0]).domain([0, d3.max(data, function(d) { return d.value; })]);
 
-    svg.selectAll("rect")
-        .data(data)
-        .enter().append("rect")
-        .attr("x", function(d) { return x(d.date); })
-        .attr("width", 50)
-        .attr("y", function(d) { return y(d.value); })
-        .attr("height", function(d) { return month_height - y(d.value); });
+	var svg = d3.select("#month").append("svg")
+		.attr("width", month_width + month_margin.left + month_margin.right)
+		.attr("height", month_height + month_margin.top + month_margin.bottom)
+		.append("g")
+		.attr("transform", "translate(" + month_margin.left + "," + month_margin.top + ")");
 
-    // Add axis for y & x:
-    var yAxis = d3.axisLeft()
-        .scale(y)
-        .tickSize(-month_width) //as wide as our graph
-        .ticks(3);
+	var x = d3.scaleTime().range([0, month_width]).domain([data[0].date, data[data.length-1].date]);
+	var y = d3.scaleLinear().range([month_height, 0]).domain([0, d3.max(data, function(d) { return d.value; })]);
 
-    svg.append("g")
-        .attr("class", "y axis")
-        .call(yAxis)
+	svg.selectAll("rect")
+		.data(data)
+		.enter().append("rect")
+		.attr("x", function(d) { return x(d.date); })
+		.attr("width", 50)
+		.attr("y", function(d) { return y(d.value); })
+		.attr("height", function(d) { return month_height - y(d.value); });
 
-    var xAxis = d3.axisBottom()
-         .scale(x)
-         .tickFormat(d3.timeFormat("%Y-%m"));
+	// Add axis for y & x:
+	var yAxis = d3.axisLeft()
+		.scale(y)
+		.tickSize(-month_width) //as wide as our graph
+		.ticks(3);
 
-     svg.append("g")
-         .attr("class", "x axis")
-         .attr("transform", "translate(0," + month_height + ")")
-         .call(xAxis)
+	svg.append("g")
+		.attr("class", "y axis")
+		.call(yAxis)
+
+	var xAxis = d3.axisBottom()
+		 .scale(x)
+		 .tickFormat(d3.timeFormat("%Y-%m"));
+
+	 svg.append("g")
+		 .attr("class", "x axis")
+		 .attr("transform", "translate(0," + month_height + ")")
+		 .call(xAxis)
+
+	svg.selectAll("label")
+		.data(data)
+		.enter()
+		.append("text")
+		.attr("class", "label")
+		// .style("fill", "#019875")
+		.attr("y", function(d) { return y(d.value); })
+		.attr("x", function(d) { return x(d.date); })
+		.attr("dy", "-.35em") //vertical align middle
+		.attr("dx", ".7em") //vertical align middle
+		.text(function(d){ return d.value; });
 
 
 </script>
