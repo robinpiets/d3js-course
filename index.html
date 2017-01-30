@@ -4,13 +4,20 @@
 	<!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
 	<!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 	<link href="css/d3js.css"  rel="stylesheet">
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
 <div class="main">
 	<h1>Dashboard</h1>
+
+	<!-- We will add the data table here -->
+	<h2>Custom Data:</h2>
+	<div class="row">
+		<div id="custom-table">
+		</div>
+	</div>
 
 	<!-- We will add the donut and table here -->
 	<h2>Total value</h2>
@@ -57,28 +64,111 @@
 			{year: "2014-02", value: 478, category: "shoes"}
 		];
 
-	data2 = [
-	    {key: "pants", values:[
-	        {year: "2013-01", value: 53, category: "pants"},
-	        {year: "2013-02", value: 165, category: "pants"},
-	        {year: "2013-03", value: 269, category: "pants"},
-	        {year: "2013-04", value: 344, category: "pants"},
-	    ]},
-	    {key: "shirt", values:[
-	        {year: "2013-05", value: 376, category: "shirt"},
-	        {year: "2013-06", value: 410, category: "shirt"},
-	        {year: "2013-07", value: 421, category: "shirt"},
-	        {year: "2013-08", value: 405, category: "shirt"},
-	        {year: "2013-09", value: 376, category: "shirt"},
-	    ]},
-	    {key: "shoes", values:[
-	        {year: "2013-10", value: 359, category: "shoes"},
-	        {year: "2013-11", value: 392, category: "shoes"},
-	        {year: "2013-12", value: 433, category: "shoes"},
-	        {year: "2014-01", value: 455, category: "shoes"},
-	        {year: "2014-02", value: 478, category: "shoes"}
-		]}
-	];
+		customData = [
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "4",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "5",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "5",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "5",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "4",
+	"Evaluater2": "5",
+	"Evaluater3": "4",
+	"Evaluater4": "4"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "3",
+	"Evaluater4": "4"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "4",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "3",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "1",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "5",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "5",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "3",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "2",
+	"Evaluater2": "3",
+	"Evaluater3": "3",
+	"Evaluater4": "2"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "5",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "5",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "5",
+	"Evaluater2": "5",
+	"Evaluater3": "5",
+	"Evaluater4": "5"
+	},
+	{
+	"Evaluater1": "4",
+	"Evaluater2": "4",
+	"Evaluater3": "3",
+	"Evaluater4": "3"
+	}
+];
+
 
 
 	var parseDate = d3.timeParse("%Y-%m");
@@ -153,7 +243,7 @@
 		.attr("width", rectWidth)
 		// .attr("width", function(d) { return month_height - y(d.value); })
 		.attr("y", function(d) { return y(d.value); })
-		.attr 	("height", function(d) { return month_height - y(d.value); });
+		.attr("height", function(d) { return month_height - y(d.value); });
 
 	// Add axis for y & x:
 	var yAxis = d3.axisLeft()
@@ -184,7 +274,9 @@
 		.attr("dx", ".7em") //vertical align middle
 		.text(function(d){ return d.value; });
 
-	// Grouping results:
+
+
+	// Nesting results & Grouping results:
 	var groupByCategory = d3.nest()
         .key(function(d) { return d.category; }).sortKeys(d3.ascending)
         .rollup(function(v) { return d3.sum(v, function(d) {return d.value;})})
@@ -215,6 +307,7 @@
 		.append('tr')
 		// .style('background-color','pink');
 
+
 	// Making a 'donut'
 	const donut_width = 250,
         donut_height = 250,
@@ -228,8 +321,8 @@
 	    .attr("transform", "translate(" + donut_width / 2 + "," + donut_height / 2 + ")");
 
 	var arc = d3.arc()
-    	.outerRadius(donut_radius - 10)
-    	.innerRadius(donut_radius - 60);
+    	.outerRadius(donut_radius - 0)
+    	.innerRadius(0);
 
 	var pie = d3.pie()
         .value(function(d) { return d.value; });
@@ -244,6 +337,61 @@
     	.style("fill", function(d) {
         	return color(d.data.key);
 		});
+
+
+	// d3.ready(function() {
+		// $('#counter_table tr').click(function(e) {
+		//
+		// 	// console.log($(this).find('td').html());
+		// 	var currentClick = $(this).find('td').html();
+		//
+		// 	$('#table').empty();
+		//
+		// 	var table = d3.select('#table').append('table');
+		// 	var	formatDate = d3.timeFormat("%Y-%m");
+		//
+		// 	var tbody = table.append('tbody')
+		// 	var tr = tbody.selectAll('tr')
+		// 		.data(data).enter()
+		// 		.append('tr');
+		//
+		//
+		// 		tr.append('td').html(function(d) { return formatDate( d.date ); });
+		// 		tr.append('td').html(function(d) { return d.category });
+		// 		tr.append('td').html(function(d) { return d.value });
+		//
+		//
+		// 	var thead = table.append('thead').append('tr');
+		//
+		// 	// thead.append('th').attr("class", "value").text("value");
+		// 	// thead.append('th').text("category");
+		// 	thead.append('th').text("date");
+		//
+		//
+		// });
+	// });
+
+	// Custom Decipher Data
+
+	// customData.forEach(function(d) {
+	// 	d.Evaluater1 = +d.Evaluater1;
+	// 	d.Evaluater2 = +d.Evaluater2;
+	// 	d.Evaluater3 = +d.Evaluater3;
+	// 	d.Evaluater4 = +d.Evaluater4;
+	// });
+	//
+	// var table = d3.select('#custom-table').append('table');
+	// var tbody = table.append('tbody')
+	// var tr = tbody.selectAll('tr')
+	// 	.data(customData).enter()
+	// 	.append('tr');
+	//
+	// tr.append('td').html(function(d) { return d.Evaluater1 });
+	// tr.append('td').html(function(d) { return d.Evaluater2 });
+	// tr.append('td').html(function(d) { return d.Evaluater3 });
+	// tr.append('td').html(function(d) { return d.Evaluater4 });
+
+
 
 </script>
 
