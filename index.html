@@ -239,25 +239,25 @@
 	function drawChart(category_name) {
 
 		if (category_name) {
-			console.log( category_name );
-			// d3.select("#month svg").remove();
-
+			// console.log( category_name );
 			filtered_data = data.filter(function(d){
 				return d.category === category_name;
 			});
 		} else {
 			filtered_data = data
 		}
+		// Remove old Axis
 		svg.selectAll('rect').remove();
-		// svg.selectAll('label').remove();
+		svg.selectAll('.label').remove();
+		svg.selectAll('.axis').remove();
 
 		svg.selectAll("rect")
 			.data(filtered_data)
 			.enter().append("rect")
 			.attr("x", function(d) { return x(d.date); })
-			// .attr("x", function(d) { return x(d.date); })
 			.attr("width", rectWidth)
-			// .attr("width", function(d) { return month_height - y(d.value); })
+			.attr("y", function(d) { return month_height; })
+			.transition().duration(500)
 			.attr("y", function(d) { return y(d.value); })
 			.attr("height", function(d) { return month_height - y(d.value); });
 
@@ -280,13 +280,15 @@
 			.call(xAxis);
 
 		svg.selectAll("label")
-			.data(data)
+			.data(filtered_data)
 			.enter()
 			.append("text")
 			.attr("class", "label")
-			// .style("fill", "#019875")
-			.attr("y", function(d) { return y(d.value); })
+
+			.attr("y", function(d) { return month_height; })
 			.attr("x", function(d) { return x(d.date); })
+			.transition().duration(700)
+			.attr("y", function(d) { return y(d.value); })
 			.attr("dy", "-.35em") //vertical align middle
 			.attr("dx", ".7em") //vertical align middle
 			.text(function(d){ return d.value; });
