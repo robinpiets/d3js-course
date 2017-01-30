@@ -1,0 +1,1406 @@
+customData = [
+{
+"FIELD1": "Evaluater1",
+"FIELD2": "Evaluater2",
+"FIELD3": "Evaluater3",
+"FIELD4": "Evaluater4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "1",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "2",
+"FIELD2": "3",
+"FIELD3": "3",
+"FIELD4": "2"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "3"
+},
+{
+"FIELD1": "4",
+"FIELD2": "3",
+"FIELD3": "2",
+"FIELD4": "3"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "2",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "2",
+"FIELD4": "4"
+},
+{
+"FIELD1": "3",
+"FIELD2": "3",
+"FIELD3": "3",
+"FIELD4": "3"
+},
+{
+"FIELD1": "4",
+"FIELD2": "3",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "2",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "2"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "4",
+"FIELD3": "1",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "4",
+"FIELD3": "2",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "1",
+"FIELD2": "1",
+"FIELD3": "1",
+"FIELD4": "1"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "3",
+"FIELD2": "4",
+"FIELD3": "2",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "3",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "1",
+"FIELD2": "1",
+"FIELD3": "1",
+"FIELD4": "1"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "1",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "3",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "3",
+"FIELD3": "2",
+"FIELD4": "3"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "2",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "3",
+"FIELD2": "3",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "4",
+"FIELD3": "1",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "3",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "3",
+"FIELD3": "2",
+"FIELD4": "3"
+},
+{
+"FIELD1": "3",
+"FIELD2": "4",
+"FIELD3": "2",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "3",
+"FIELD3": "1",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "2",
+"FIELD2": "3",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "3",
+"FIELD3": "2",
+"FIELD4": "4"
+},
+{
+"FIELD1": "3",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "2"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "2",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "3",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "4",
+"FIELD3": "2",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "2",
+"FIELD2": "2",
+"FIELD3": "1",
+"FIELD4": "1"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "3",
+"FIELD3": "2",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "2",
+"FIELD3": "2",
+"FIELD4": "2"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "5",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "3",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "3",
+"FIELD2": "3",
+"FIELD3": "3",
+"FIELD4": "3"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "2",
+"FIELD4": "3"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "3",
+"FIELD2": "3",
+"FIELD3": "2",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "3",
+"FIELD3": "2",
+"FIELD4": "3"
+},
+{
+"FIELD1": "3",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "2",
+"FIELD2": "2",
+"FIELD3": "2",
+"FIELD4": "2"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "2",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "2",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "3",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "5",
+"FIELD3": "4",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "4",
+"FIELD2": "4",
+"FIELD3": "3",
+"FIELD4": "4"
+},
+{
+"FIELD1": "5",
+"FIELD2": "5",
+"FIELD3": "5",
+"FIELD4": "5"
+}
+]

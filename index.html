@@ -58,113 +58,6 @@
 			{year: "2014-02", value: 478, category: "shoes"}
 		];
 
-		customData = [
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "4",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "5",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "5",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "5",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "4",
-	"Evaluater2": "5",
-	"Evaluater3": "4",
-	"Evaluater4": "4"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "3",
-	"Evaluater4": "4"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "4",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "3",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "1",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "5",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "5",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "3",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "2",
-	"Evaluater2": "3",
-	"Evaluater3": "3",
-	"Evaluater4": "2"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "5",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "5",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "5",
-	"Evaluater2": "5",
-	"Evaluater3": "5",
-	"Evaluater4": "5"
-	},
-	{
-	"Evaluater1": "4",
-	"Evaluater2": "4",
-	"Evaluater3": "3",
-	"Evaluater4": "3"
-	}
-];
-
-
-
 	var parseDate = d3.timeParse("%Y-%m");
 
 	data.forEach(function(d) {
@@ -185,8 +78,6 @@
 		.append('tr')
 
 
-	// var className = 'foo';
-	// var className = function(d) { return d.category };
 	var className = 'test-' + Math.random();
 
 	tr.append('td').html(function(d) { return formatDate( d.date ); });
@@ -458,10 +349,7 @@
 	}
 
 	drawAnimatedCircle();
-
-
-
-
+	
 </script>
 
 </body>
