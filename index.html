@@ -12,15 +12,9 @@
 <div class="main">
 	<h1>Dashboard</h1>
 
-	<!-- We will add the data table here -->
-	<h2>Custom Data:</h2>
-	<div class="row">
-		<div id="custom-table">
-		</div>
-	</div>
 
 	<!-- We will add the donut and table here -->
-	<h2>Total value</h2>
+	<h2>Total value (CLICK ON THE COLORED BARS)</h2>
 	<div class="row">
 		<div id="counter_table"></div>
 		<div id="today"></div>
@@ -364,14 +358,28 @@
 	}
 
 
+	// This function helps you figure out when all
+	// the elements have finished transitioning
+	// Reference: https://groups.google.com/d/msg/d3-js/WC_7Xi6VV50/j1HK0vIWI-EJ
+	function checkEndAll(transition, callback) {
+	    var n = 0;
+	    transition
+	    .each(function() { ++n; })
+	    .on("end", function() {
+	        if (!--n) callback.apply(this, arguments);
+	    });
+	}
 
 	function drawAnimatedCircle(category_name) {
+
+		var sum = d3.sum(data, function(d) { return d.value; });
 
 		if (category_name) {
 			// console.log( category_name );
 			filtered_data = data.filter(function(d){
 				return d.category === category_name;
 			});
+
 		} else {
 			filtered_data = groupByCategory
 		}
@@ -396,6 +404,8 @@
 
 	    // Remove the previous ring
 	    d3.select('#today svg').remove();
+	    d3.select('#today svg').remove();
+
 	    var svg = d3.select('#today').append("svg")
 			.attr("width", donut_width)
 			.attr("height", donut_height)
@@ -418,74 +428,37 @@
 					return color(d.data.key);
 				}
 			})
+			.style("opacity", function(d) {
+				// console.log(d);
+	        	if (category_name) {
+					var perc = 1 / filtered_data.length;
+					var index = d.index;
+					return 1 - (perc * index);
+				} else {
+					return 1;
+				}
+			})
 	    .transition()
 	    .duration(1000)
 	    .attrTween('d', tweenPie)
+		.call(checkEndAll, function () {
+	        // Finally append the title of the text to the node
+	        groups.append('text')
+	        .attr('text-anchor', 'middle')
+	        .attr('transform', function (d) {
+	                return 'translate(' + arc.centroid(d) + ')';
+	            })
+
+	        .html(function (d) {
+	            // return d.data.value; // Use this to return the value
+				return d3.format(".1f")(d.data.value / sum * 100) + '%';
+	        });
+	    });
 
 	}
 
 	drawAnimatedCircle();
 
-	// Render the initial ring
-	// drawAnimatedRingChart({
-	//     el: '',
-	//     outerRadius: 250,
-	//     innerRadius: 250 - 125,
-	//     data: groupByCategory
-	// });
-
-
-	// d3.ready(function() {
-		// $('#counter_table tr').click(function(e) {
-		//
-		// 	// console.log($(this).find('td').html());
-		// 	var currentClick = $(this).find('td').html();
-		//
-		// 	$('#table').empty();
-		//
-		// 	var table = d3.select('#table').append('table');
-		// 	var	formatDate = d3.timeFormat("%Y-%m");
-		//
-		// 	var tbody = table.append('tbody')
-		// 	var tr = tbody.selectAll('tr')
-		// 		.data(data).enter()
-		// 		.append('tr');
-		//
-		//
-		// 		tr.append('td').html(function(d) { return formatDate( d.date ); });
-		// 		tr.append('td').html(function(d) { return d.category });
-		// 		tr.append('td').html(function(d) { return d.value });
-		//
-		//
-		// 	var thead = table.append('thead').append('tr');
-		//
-		// 	// thead.append('th').attr("class", "value").text("value");
-		// 	// thead.append('th').text("category");
-		// 	thead.append('th').text("date");
-		//
-		//
-		// });
-	// });
-
-	// Custom Decipher Data
-
-	// customData.forEach(function(d) {
-	// 	d.Evaluater1 = +d.Evaluater1;
-	// 	d.Evaluater2 = +d.Evaluater2;
-	// 	d.Evaluater3 = +d.Evaluater3;
-	// 	d.Evaluater4 = +d.Evaluater4;
-	// });
-	//
-	// var table = d3.select('#custom-table').append('table');
-	// var tbody = table.append('tbody')
-	// var tr = tbody.selectAll('tr')
-	// 	.data(customData).enter()
-	// 	.append('tr');
-	//
-	// tr.append('td').html(function(d) { return d.Evaluater1 });
-	// tr.append('td').html(function(d) { return d.Evaluater2 });
-	// tr.append('td').html(function(d) { return d.Evaluater3 });
-	// tr.append('td').html(function(d) { return d.Evaluater4 });
 
 
 
