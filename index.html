@@ -108,7 +108,8 @@
 		// .attr("transform", "translate(" + month_margin.left + "," + month_margin.top + ")");
 		.attr("transform", "translate(" + month_margin.left + "," + month_margin.top + ")");
 
-	var maxX = data[data.length-1].date;
+	// var maxX = data[data.length-1].date;
+	// var maxX = d3.timeMonth.offset( data[data.length-1].date, +1 );
 	var maxX = d3.timeMonth.offset( data[data.length-1].date, +1 );
 	var maxY = d3.max(data, function(d) { return d.value; });
 	// console.log( d3.max(data, function(d) { return d.date } ) );
@@ -116,16 +117,19 @@
 	var x = d3.scaleTime().range([0, month_width - 50]).domain([data[0].date, maxX]);
 	var y = d3.scaleLinear().range([month_height, 0]).domain([0, maxY]);
 
+	var rectWidth = 50;
+	var rectWidth = month_width / data.length - 20;
+	// var rectWidth = function(d) { return month_width - y(d.value); };
 
 	svg.selectAll("rect")
 		.data(data)
 		.enter().append("rect")
 		.attr("x", function(d) { return x(d.date); })
 		// .attr("x", function(d) { return x(d.date); })
-		.attr("width", 50)
+		.attr("width", rectWidth)
 		// .attr("width", function(d) { return month_height - y(d.value); })
 		.attr("y", function(d) { return y(d.value); })
-		.attr("height", function(d) { return month_height - y(d.value); });
+		.attr 	("height", function(d) { return month_height - y(d.value); });
 
 	// Add axis for y & x:
 	var yAxis = d3.axisLeft()
