@@ -333,35 +333,141 @@
 		// .style('background-color','pink');
 
 
-	// Making a 'donut'
-	const donut_width = 250,
-        donut_height = 250,
-        donut_radius = 125;
+		// Making a 'donut'
+		const donut_width = 250,
+	        donut_height = 250,
+	        donut_radius = 125;
 
-	var donut_svg = d3.select("#today").append("svg")
-	    .attr("width", donut_width)
-	    .attr("height", donut_height)
+		var donut_svg = d3.select("#today").append("svg")
+		    .attr("width", donut_width)
+		    .attr("height", donut_height)
 
-	var donut = donut_svg.append("g")
-	    .attr("transform", "translate(" + donut_width / 2 + "," + donut_height / 2 + ")");
+		var donut = donut_svg.append("g")
+		    .attr("transform", "translate(" + donut_width / 2 + "," + donut_height / 2 + ")");
 
-	var arc = d3.arc()
-    	.outerRadius(donut_radius - 0)
-    	.innerRadius(0);
+		var arc = d3.arc()
+	    	.outerRadius(donut_radius - 0)
+	    	.innerRadius(0);
 
-	var pie = d3.pie()
-        .value(function(d) { return d.value; });
+		var pie = d3.pie()
+	        .value(function(d) { return d.value; });
 
-	var g = donut.selectAll(".arc")
-	    .data(pie(groupByCategory))
-	    .enter().append("g")
-	    .attr("class", "arc");
+		var g = donut.selectAll(".arc")
+		    .data(pie(groupByCategory))
+		    .enter().append("g")
+		    .attr("class", "arc");
 
-	g.append("path")
-    	.attr("d", arc)
-    	.style("fill", function(d) {
-        	return color(d.data.key);
-		});
+		g.append("path")
+	    	.attr("d", arc)
+	    	.style("fill", function(d) {
+	        	return color(d.data.key);
+			});
+
+
+
+	function checkEndAll(transition, callback) {
+	    var n = 0;
+	    transition
+	    .each(function() { ++n; })
+	    .each("end", function() {
+	        if (!--n) callback.apply(this, arguments);
+	    });
+	}
+
+	function drawAnimatedRingChart(config) {
+	    // var pie = d3.layout.pie().value(function (d) {
+	    var pie = d3.pie().value(function (d) {
+	        return d.value;
+	    });
+
+	    // var color = d3.scale.category10();
+	    var arc = d3.arc();
+
+	    // This function helps transition between
+	    // a starting point and an ending point
+	    // Also see: http://jsfiddle.net/Nw62g/3/
+	    function tweenPie(finish) {
+	        var start = {
+	                startAngle: 0,
+	                endAngle: 0
+	            };
+	        var i = d3.interpolate(start, finish);
+	        return function(d) { return arc(i(d)); };
+	    }
+	    arc.outerRadius(config.outerRadius || outerRadius)
+	        .innerRadius(config.innerRadius || innerRadius);
+
+	    // Remove the previous ring
+	    // d3.select(config.el).selectAll('g').remove();
+
+
+
+		var svg = d3.select("#today").append("svg")
+	    	.attr("width", donut_width)
+	    	.attr("height", donut_height)
+
+	    // Add the groups that will hold the arcs
+	    var groups = svg.selectAll('g')
+		    .data(pie(config.data))
+		    .enter()
+		    .append('g')
+		    .attr('class', 'arc')
+		        // 'transform': 'translate(' + outerRadius + ', ' + outerRadius + ')'
+
+			.attr("d", arc)
+			.style("fill", function(d) {
+				return color(d.data.key);
+			});
+
+		// console.log( svg.selectAll('g').data(pie(config.data)) );
+		// console.log( config.data );
+		// console.log( groups );
+
+		// var g = donut.selectAll(".arc")
+		//     .data(pie(groupByCategory))
+		//     .enter().append("g")
+		//     .attr("class", "arc");
+		//
+		var color = d3.scaleOrdinal()
+		.range(["#D91E18", "#E87E04", "#F4D03F"]);
+
+
+	    // Create the actual slices of the pie
+	    groups.append('path')
+		    .attr({
+		        'fill': function (d) {
+		            return 'red';
+		            // return color(d.data.key);
+		        }
+		    })
+
+		    // .transition()
+		    // .duration(config.duration || 1000)
+		    // .attrTween('d', tweenPie)
+		    // .call(checkEndAll, function () {
+			//
+		    //     // Finally append the title of the text to the node
+		    //     groups.append('text')
+		    //     .attr({
+		    //         'text-anchor': 'middle',
+		    //         'transform': function (d) {
+		    //             return 'translate(' + arc.centroid(d) + ')';
+		    //         }
+		    //     })
+		    //     .text(function (d) {
+		    //         // Notice the usage of d.data to access the raw data item
+		    //         return d.data.value;
+		    //     });
+		    // });
+	}
+
+	// Render the initial ring
+	// drawAnimatedRingChart({
+	//     el: '',
+	//     outerRadius: 250,
+	//     innerRadius: 250 - 125,
+	//     data: groupByCategory
+	// });
 
 
 	// d3.ready(function() {
