@@ -78,6 +78,9 @@
         .y.axis path.domain{
             stroke: none;
         }
+        .foo {
+            background-color: pink;
+        }
     </style>
     <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
@@ -136,6 +139,7 @@
         // console.log( Date.parse( d.year ) );
         d.date = parseDate( d.year );
         d.value = +d.value;
+        d.class = d.category;
     });
 
 
@@ -149,8 +153,13 @@
         .data(data).enter()
         .append('tr');
 
+    // var className = 'foo';
+    // var className = function(d) { return d.category };
+    var className = 'test-' + Math.random();
+
     tr.append('td').html(function(d) { return formatDate( d.date ); });
-    tr.append('td').html(function(d) { return d.category });
+    tr.append('td').html(function(d) { return d.category }).classed( 'foo', function() { return Math.random() > 0.5; } );
+    // tr.append('td').html(function(d) { return d.category }).classed( className, true  );
     tr.append('td').html(function(d) { return d.value });
 
     var thead = table.append('thead').append('tr')
@@ -159,6 +168,31 @@
     thead.append('th').text("category");
     thead.append('th').attr("class", "value").text("value");
 
+
+    // Barchart:
+    var month_margin = {top: 20, right: 20, bottom: 70, left: 40},
+        month_width = 900 - month_margin.left - month_margin.right,
+        month_height = 300 - month_margin.top - month_margin.bottom;
+
+
+    var svg = d3.select("#month").append("svg")
+        .attr("width", month_width + month_margin.left + month_margin.right)
+        .attr("height", month_height + month_margin.top + month_margin.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + month_margin.left + "," + month_margin.top + ")");
+
+    var x = d3.scaleTime().range([0, month_width]).domain([data[0].date, data[data.length-1].date]);
+    var y = d3.scaleLinear().range([month_height, 0]).domain([0, d3.max(data, function(d) { return d.value; })]);
+
+    svg.selectAll("rect")
+        .data(data)
+        .enter().append("rect")
+        .style("fill", "#019875")
+        .attr("x", function(d) { return x(d.date); })
+        .attr("width", 50)
+        .attr("y", function(d) { return y(d.value); })
+        .attr("height", function(d) { return month_height - y(d.value); });
 </script>
 
 </body>
