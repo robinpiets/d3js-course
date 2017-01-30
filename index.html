@@ -188,7 +188,8 @@
 	var tbody = table.append('tbody')
 	var tr = tbody.selectAll('tr')
 		.data(data).enter()
-		.append('tr');
+		.append('tr')
+
 
 	// var className = 'foo';
 	// var className = function(d) { return d.category };
@@ -235,45 +236,64 @@
 	var rectWidth = month_width / data.length - 20;
 	// var rectWidth = function(d) { return month_width - y(d.value); };
 
-	svg.selectAll("rect")
-		.data(data)
-		.enter().append("rect")
-		.attr("x", function(d) { return x(d.date); })
-		// .attr("x", function(d) { return x(d.date); })
-		.attr("width", rectWidth)
-		// .attr("width", function(d) { return month_height - y(d.value); })
-		.attr("y", function(d) { return y(d.value); })
-		.attr("height", function(d) { return month_height - y(d.value); });
+	function drawChart(category_name) {
 
-	// Add axis for y & x:
-	var yAxis = d3.axisLeft()
-		.scale(y)
-		.tickSize(-month_width) //as wide as our graph
-		.ticks(5);
-	svg.append("g").attr("class", "y axis").call(yAxis)
+		if (category_name) {
+			console.log( category_name );
+			// d3.select("#month svg").remove();
 
-	var xAxis = d3.axisBottom()
-		.scale(x)
-		.tickFormat(d3.timeFormat("%Y-%m"))
-		.tickSize(-month_height) //as wide as our graph
-		.ticks();
-	svg.append("g")
-		.attr("class", "x axis")
-		.attr("transform", "translate(0," + month_height + ")")
-		.call(xAxis);
+			filtered_data = data.filter(function(d){
+				return d.category === category_name;
+			});
+		} else {
+			filtered_data = data
+		}
+		svg.selectAll('rect').remove();
+		// svg.selectAll('label').remove();
 
-	svg.selectAll("label")
-		.data(data)
-		.enter()
-		.append("text")
-		.attr("class", "label")
-		// .style("fill", "#019875")
-		.attr("y", function(d) { return y(d.value); })
-		.attr("x", function(d) { return x(d.date); })
-		.attr("dy", "-.35em") //vertical align middle
-		.attr("dx", ".7em") //vertical align middle
-		.text(function(d){ return d.value; });
+		svg.selectAll("rect")
+			.data(filtered_data)
+			.enter().append("rect")
+			.attr("x", function(d) { return x(d.date); })
+			// .attr("x", function(d) { return x(d.date); })
+			.attr("width", rectWidth)
+			// .attr("width", function(d) { return month_height - y(d.value); })
+			.attr("y", function(d) { return y(d.value); })
+			.attr("height", function(d) { return month_height - y(d.value); });
 
+
+		// Add axis for y & x:
+		var yAxis = d3.axisLeft()
+			.scale(y)
+			.tickSize(-month_width) //as wide as our graph
+			.ticks(5);
+		svg.append("g").attr("class", "y axis").call(yAxis)
+
+		var xAxis = d3.axisBottom()
+			.scale(x)
+			.tickFormat(d3.timeFormat("%Y-%m"))
+			.tickSize(-month_height) //as wide as our graph
+			.ticks();
+		svg.append("g")
+			.attr("class", "x axis")
+			.attr("transform", "translate(0," + month_height + ")")
+			.call(xAxis);
+
+		svg.selectAll("label")
+			.data(data)
+			.enter()
+			.append("text")
+			.attr("class", "label")
+			// .style("fill", "#019875")
+			.attr("y", function(d) { return y(d.value); })
+			.attr("x", function(d) { return x(d.date); })
+			.attr("dy", "-.35em") //vertical align middle
+			.attr("dx", ".7em") //vertical align middle
+			.text(function(d){ return d.value; });
+
+	}
+
+	drawChart();
 
 
 	// Nesting results & Grouping results:
@@ -298,6 +318,9 @@
 		.append('tr')
 		.style("background-color", function(d) {
         	return color(d.key);
+		})
+		.on('click', function(d){
+			drawChart(d.key)
 		});
 
 	counter_tr.append('td').html(function(d) { return d.key; });
