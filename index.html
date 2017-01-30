@@ -57,6 +57,30 @@
 			{year: "2014-02", value: 478, category: "shoes"}
 		];
 
+	data2 = [
+	    {key: "pants", values:[
+	        {year: "2013-01", value: 53, category: "pants"},
+	        {year: "2013-02", value: 165, category: "pants"},
+	        {year: "2013-03", value: 269, category: "pants"},
+	        {year: "2013-04", value: 344, category: "pants"},
+	    ]},
+	    {key: "shirt", values:[
+	        {year: "2013-05", value: 376, category: "shirt"},
+	        {year: "2013-06", value: 410, category: "shirt"},
+	        {year: "2013-07", value: 421, category: "shirt"},
+	        {year: "2013-08", value: 405, category: "shirt"},
+	        {year: "2013-09", value: 376, category: "shirt"},
+	    ]},
+	    {key: "shoes", values:[
+	        {year: "2013-10", value: 359, category: "shoes"},
+	        {year: "2013-11", value: 392, category: "shoes"},
+	        {year: "2013-12", value: 433, category: "shoes"},
+	        {year: "2014-01", value: 455, category: "shoes"},
+	        {year: "2014-02", value: 478, category: "shoes"}
+		]}
+	];
+
+
 	var parseDate = d3.timeParse("%Y-%m");
 
 	data.forEach(function(d) {
@@ -148,18 +172,78 @@
 		.attr("transform", "translate(0," + month_height + ")")
 		.call(xAxis);
 
-	// svg.selectAll("label")
-	// 	.data(data)
-	// 	.enter()
-	// 	.append("text")
-	// 	.attr("class", "label")
-	// 	// .style("fill", "#019875")
-	// 	.attr("y", function(d) { return y(d.value); })
-	// 	.attr("x", function(d) { return x(d.date); })
-	// 	.attr("dy", "-.35em") //vertical align middle
-	// 	.attr("dx", ".7em") //vertical align middle
-	// 	.text(function(d){ return d.value; });
+	svg.selectAll("label")
+		.data(data)
+		.enter()
+		.append("text")
+		.attr("class", "label")
+		// .style("fill", "#019875")
+		.attr("y", function(d) { return y(d.value); })
+		.attr("x", function(d) { return x(d.date); })
+		.attr("dy", "-.35em") //vertical align middle
+		.attr("dx", ".7em") //vertical align middle
+		.text(function(d){ return d.value; });
 
+	// Grouping results:
+	var groupByCategory = d3.nest()
+        .key(function(d) { return d.category; }).sortKeys(d3.ascending)
+        .rollup(function(v) { return d3.sum(v, function(d) {return d.value;})})
+        .entries(data);
+
+	var counter_table = d3.select('#counter_table').append('table');
+
+	var counter_thead = counter_table.append('thead').append('tr')
+
+	counter_thead.append('th').text("category");
+	counter_thead.append('th').attr("class", "value").text("value");
+
+	var color = d3.scaleOrdinal()
+		.range(["#D91E18", "#E87E04", "#F4D03F"]);
+
+	var counter_tbody = counter_table.append('tbody')
+	var counter_tr = counter_tbody.selectAll('tr')
+		.data(groupByCategory).enter()
+		.append('tr')
+		.style("background-color", function(d) {
+        	return color(d.key);
+		});
+
+	counter_tr.append('td').html(function(d) { return d.key; });
+	counter_tr.append('td').html(function(d) { return d.value });
+	counter_tr = counter_tbody.selectAll('tr')
+		.data(groupByCategory).enter()
+		.append('tr')
+		// .style('background-color','pink');
+
+	// Making a 'donut'
+	const donut_width = 250,
+        donut_height = 250,
+        donut_radius = 125;
+
+	var donut_svg = d3.select("#today").append("svg")
+	    .attr("width", donut_width)
+	    .attr("height", donut_height)
+
+	var donut = donut_svg.append("g")
+	    .attr("transform", "translate(" + donut_width / 2 + "," + donut_height / 2 + ")");
+
+	var arc = d3.arc()
+    	.outerRadius(donut_radius - 10)
+    	.innerRadius(donut_radius - 60);
+
+	var pie = d3.pie()
+        .value(function(d) { return d.value; });
+
+	var g = donut.selectAll(".arc")
+	    .data(pie(groupByCategory))
+	    .enter().append("g")
+	    .attr("class", "arc");
+
+	g.append("path")
+    	.attr("d", arc)
+    	.style("fill", function(d) {
+        	return color(d.data.key);
+		});
 
 </script>
 
