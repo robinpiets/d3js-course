@@ -5,83 +5,7 @@
 	<!-- <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script> -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
-    <style>
-        html{
-            font-family: "Open Sans";
-            font-style: normal;
-            font-variant: normal;
-            font-weight: 500;
-            color: #333;
-            background: #f5f5f5;
-        }
-        .row{
-            clear: both;
-            overflow: hidden;
-        }
-        h1{
-            color: #333;
-        }
-        h2{
-            color: #999;
-            padding: 5px;
-            line-height: 1.5em;
-            margin: 0;
-        }
-        p{
-            text-align: center;
-        }
-        #table table{
-            width: 90%;
-            margin: auto;
-        }
-        #counter_table{
-            float: left;
-        }
-        #counter_table table{
-            width: 500px;
-            margin-right: 50px;
-            margin-top: 40px;
-            margin-left: 20px;
-        }
-        thead tr{
-            color: #999;
-        }
-        tbody tr{
-            height: 40px;
-
-        }
-        tbody td{
-            border-bottom: 1px solid #999999;
-        }
-        td .legend{
-            border-radius: 50%;
-            height: 20px;
-            width: 20px;
-            display: block;
-        }
-        th.value{
-            width: 30px;
-        }
-        th{
-            text-transform: uppercase;
-            font-size: 12px;
-            text-align: left;
-        }
-        .main{
-            width: 900px;
-            margin: auto;
-        }
-        .y.axis .tick line {
-            stroke-width: 1;
-            stroke: rgba(0, 0, 0, 0.2);
-        }
-        .y.axis path.domain{
-            stroke: none;
-        }
-        .foo {
-            background-color: pink;
-        }
-    </style>
+    <link href="css/d3js.css"  rel="stylesheet">
     <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
@@ -171,16 +95,16 @@
 
     // Barchart:
     var month_margin = {top: 20, right: 20, bottom: 70, left: 40},
-        month_width = 900 - month_margin.left - month_margin.right,
-        month_height = 300 - month_margin.top - month_margin.bottom;
+    // var month_margin = {top: 0, right: 0, bottom: 0, left: 0},
+        month_width = 900,
+        month_height = 200;
 
 
     var svg = d3.select("#month").append("svg")
         .attr("width", month_width + month_margin.left + month_margin.right)
         .attr("height", month_height + month_margin.top + month_margin.bottom)
         .append("g")
-        .attr("transform",
-            "translate(" + month_margin.left + "," + month_margin.top + ")");
+        .attr("transform", "translate(" + month_margin.left + "," + month_margin.top + ")");
 
     var x = d3.scaleTime().range([0, month_width]).domain([data[0].date, data[data.length-1].date]);
     var y = d3.scaleLinear().range([month_height, 0]).domain([0, d3.max(data, function(d) { return d.value; })]);
@@ -188,11 +112,31 @@
     svg.selectAll("rect")
         .data(data)
         .enter().append("rect")
-        .style("fill", "#019875")
         .attr("x", function(d) { return x(d.date); })
         .attr("width", 50)
         .attr("y", function(d) { return y(d.value); })
         .attr("height", function(d) { return month_height - y(d.value); });
+
+    // Add axis for y & x:
+    var yAxis = d3.axisLeft()
+        .scale(y)
+        .tickSize(-month_width) //as wide as our graph
+        .ticks(3);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+
+    var xAxis = d3.axisBottom()
+         .scale(x)
+         .tickFormat(d3.timeFormat("%Y-%m"));
+
+     svg.append("g")
+         .attr("class", "x axis")
+         .attr("transform", "translate(0," + month_height + ")")
+         .call(xAxis)
+
+
 </script>
 
 </body>
