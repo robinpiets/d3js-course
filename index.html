@@ -9,22 +9,21 @@
 <div class="main">
 	<h1>Dashboard</h1>
 
-
-	<!-- We will add the donut and table here -->
+	<!-- Donut and table contents: -->
 	<h2>Total value (CLICK ON THE COLORED BARS)</h2>
 	<div class="row">
 		<div id="counter_table"></div>
 		<div id="today"></div>
 	</div>
 
-	<!-- We will add barchart here -->
+	<!-- Barchart -->
 	<h2>Sales every month</h2>
 	<div class="row">
 		<div id="month">
 		</div>
 	</div>
 
-	<!-- We will add the data table here -->
+	<!--Table data -->
 	<h2>Data</h2>
 	<div class="row">
 		<div id="table">
@@ -32,9 +31,7 @@
 	</div>
 
 </div>
-
-
-
+<!-- inline scripting -->
 <script>
 
 	data =
@@ -58,15 +55,11 @@
 	var parseDate = d3.timeParse("%Y-%m");
 
 	data.forEach(function(d) {
-		// console.log( Date.parse( d.year ) );
 		d.date = parseDate( d.year );
-		d.value = +d.value; // + converts it to an int, optimized version
-		// d.class = d.category;
+		d.value = +d.value; // The '+' converts it to an int -> optimized version
 	});
 
-
 	var table = d3.select('#table').append('table');
-	// var tbody = d3.select('#table').append('tbody'); // var tbody return the appended tbody
 	var	formatDate = d3.timeFormat("%Y-%m");
 
 	var tbody = table.append('tbody')
@@ -74,13 +67,10 @@
 		.data(data).enter()
 		.append('tr')
 
-
-	var className = 'test-' + Math.random();
-
 	tr.append('td').html(function(d) { return formatDate( d.date ); });
 	// debugger;
-	tr.append('td').html(function(d) { return d.category }).classed( 'foo', function() { return Math.random() > 0.5; } );
-	// tr.append('td').html(function(d) { return d.category }).classed( className, true  );
+	tr.append('td').html(function(d) { return d.category })
+		.classed( 'foo', function() { return Math.random() > 0.5; } );
 	// debugger;
 	tr.append('td').html(function(d) { return d.value });
 	// debugger;
@@ -92,36 +82,30 @@
 	thead.append('th').attr("class", "value").text("value");
 
 
-	// Barchart:
+	// Settings for the barchart:
 	var month_margin = {top: 20, right: 40, bottom: 70, left: 20},
 		month_width = 900,
 		month_height = 400;
-
 
 	var svg = d3.select("#month").append("svg")
 		.attr("width", month_width + month_margin.left + month_margin.right)
 		.attr("height", month_height + month_margin.top + month_margin.bottom)
 		.append("g")
-		// .attr("transform", "translate(" + month_margin.left + "," + month_margin.top + ")");
 		.attr("transform", "translate(" + month_margin.left + "," + month_margin.top + ")");
 
-	// var maxX = data[data.length-1].date;
-	// var maxX = d3.timeMonth.offset( data[data.length-1].date, +1 );
 	var maxX = d3.timeMonth.offset( data[data.length-1].date, +1 );
 	var maxY = d3.max(data, function(d) { return d.value; });
-	// console.log( d3.max(data, function(d) { return d.date } ) );
-	// var x = d3.scaleTime().range([0, month_width]).domain([data[0].date, data[data.length-1].date]);
+
 	var x = d3.scaleTime().range([0, month_width - 50]).domain([data[0].date, maxX]);
 	var y = d3.scaleLinear().range([month_height, 0]).domain([0, maxY]);
 
 	var rectWidth = 50;
 	var rectWidth = month_width / data.length - 20;
-	// var rectWidth = function(d) { return month_width - y(d.value); };
 
+	// Function to Draw the actual chart:
 	function drawChart(category_name) {
 
 		if (category_name) {
-			// console.log( category_name );
 			filtered_data = data.filter(function(d){
 				return d.category === category_name;
 			});
@@ -160,6 +144,7 @@
 			.attr("transform", "translate(0," + month_height + ")")
 			.call(xAxis);
 
+		// Adding the values above the chart
 		svg.selectAll("label")
 			.data(filtered_data)
 			.enter()
@@ -200,55 +185,27 @@
 		.style("background-color", function(d) {
         	return color(d.key);
 		})
-		.on('click', function(d){
+
+	// On click function
+	counter_tr.on('click', function(d){
 			drawChart(d.key)
 			drawAnimatedCircle(d.key)
 		});
 
+	// Create three new td's (not my idea to make td's btw)
 	counter_tr.append('td').html(function(d) { return d.key; });
 	counter_tr.append('td').html(function(d) { return d.value });
 	counter_tr = counter_tbody.selectAll('tr')
 		.data(groupByCategory).enter()
 		.append('tr')
 
-	const donut_width = 250,
-        donut_height = 250,
-        donut_radius = 125;
+	// Circle data
+	const circle_width = 250,
+        circle_height = 250,
+        circle_radius = 125;
 
 
-	function drawSimpleCircle() {
-		// Making a circle or 'donut'
-
-		var donut_svg = d3.select("#today").append("svg")
-		    .attr("width", donut_width)
-		    .attr("height", donut_height)
-
-		var donut = donut_svg.append("g")
-		    .attr("transform", "translate(" + donut_width / 2 + "," + donut_height / 2 + ")");
-
-		var arc = d3.arc()
-	    	.outerRadius(donut_radius - 0)
-	    	.innerRadius(0);
-
-		var pie = d3.pie()
-	        .value(function(d) { return d.value; });
-
-		var g = donut.selectAll(".arc")
-		    .data(pie(groupByCategory))
-		    .enter().append("g")
-		    .attr("class", "arc");
-
-		g.append("path")
-	    	.attr("d", arc)
-	    	.style("fill", function(d) {
-	        	return color(d.data.key);
-			});
-	}
-
-
-	// This function helps you figure out when all
-	// the elements have finished transitioning
-	// Reference: https://groups.google.com/d/msg/d3-js/WC_7Xi6VV50/j1HK0vIWI-EJ
+	// Callback for finished transitions - Reference: https://groups.google.com/d/msg/d3-js/WC_7Xi6VV50/j1HK0vIWI-EJ
 	function checkEndAll(transition, callback) {
 	    var n = 0;
 	    transition
@@ -259,7 +216,7 @@
 	}
 
 	function drawAnimatedCircle(category_name) {
-
+		// Some people call it 'pie'
 		var sum = d3.sum(data, function(d) { return d.value; });
 
 		if (category_name) {
@@ -276,9 +233,7 @@
 			.value(function(d) { return d.value; });
 	    var arc = d3.arc();
 
-	    // This function helps transition between
-	    // a starting point and an ending point
-	    // Also see: http://jsfiddle.net/Nw62g/3/
+	    // Circle transitions - Also see: http://jsfiddle.net/Nw62g/3/
 	    function tweenPie(finish) {
 	        var start = {
 	                startAngle: 0,
@@ -287,27 +242,24 @@
 	        var i = d3.interpolate(start, finish);
 	        return function(d) { return arc(i(d)); };
 	    }
-	    arc.outerRadius( donut_radius - 0 )
+	    arc.outerRadius( circle_radius - 0 )
 	        .innerRadius( 0 );
 
-	    // Remove the previous ring
-	    d3.select('#today svg').remove();
+	    // Remove the previous circle
 	    d3.select('#today svg').remove();
 
 	    var svg = d3.select('#today').append("svg")
-			.attr("width", donut_width)
-			.attr("height", donut_height)
+			.attr("width", circle_width)
+			.attr("height", circle_height)
 
-	    // Add the groups that will hold the arcs
 	    var groups = svg.selectAll('g.arc')
 		    .data(pie(filtered_data))
 		    .enter()
 		    .append('g')
 			.attr("class", "arc")
-			.attr("transform", "translate(" + donut_width / 2 + "," + donut_height / 2 + ")");
+			.attr("transform", "translate(" + circle_width / 2 + "," + circle_height / 2 + ")");
 
-		// console.log(groups);
-	    // Create the actual slices of the pie
+	    // Create the actual slices of the 'pie'
 	    groups.append('path')
 	    	.style("fill", function(d) {
 	        	if (category_name) {
@@ -326,26 +278,57 @@
 					return 1;
 				}
 			})
-	    .transition()
-	    .duration(1000)
-	    .attrTween('d', tweenPie)
-		.call(checkEndAll, function () {
-	        // Finally append the title of the text to the node
-	        groups.append('text')
-	        .attr('text-anchor', 'middle')
-	        .attr('transform', function (d) {
-	                return 'translate(' + arc.centroid(d) + ')';
-	            })
+		    .transition()
+		    .duration(1000)
+		    .attrTween('d', tweenPie)
+			.call(checkEndAll, function () {
+		        // Finally append the title of the text to the node
+		        groups.append('text')
+		        .attr('text-anchor', 'middle')
+		        .attr('transform', function (d) {
+		                return 'translate(' + arc.centroid(d) + ')';
+		            })
 
-	        .html(function (d) {
-	            // return d.data.value; // Use this to return the value
-				return d3.format(".1f")(d.data.value / sum * 100) + '%';
-	        });
-	    });
+		        .html(function (d) {
+		            // Calculate the percentage and round it
+					return d3.format(".1f")(d.data.value / sum * 100) + '%';
+		        });
+		    });
 
 	}
 
 	drawAnimatedCircle();
+
+
+	// We're not using this function in this example, but it can be handy to keep it
+	function drawSimpleCircle() {
+		// Making a simple circle or 'pie'
+
+		var circle_svg = d3.select("#today").append("svg")
+			.attr("width", circle_width)
+			.attr("height", circle_height)
+
+		var circle = circle_svg.append("g")
+			.attr("transform", "translate(" + circle_width / 2 + "," + circle_height / 2 + ")");
+
+		var arc = d3.arc()
+			.outerRadius(circle_radius - 0)
+			.innerRadius(0);
+
+		var pie = d3.pie()
+			.value(function(d) { return d.value; });
+
+		var g = circle.selectAll(".arc")
+			.data(pie(groupByCategory))
+			.enter().append("g")
+			.attr("class", "arc");
+
+		g.append("path")
+			.attr("d", arc)
+			.style("fill", function(d) {
+				return color(d.data.key);
+			});
+	}
 
 </script>
 
