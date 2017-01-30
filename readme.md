@@ -1,56 +1,13 @@
-#Fireball Boilerplate
+#D3JS Course @ Codaisseur (2017-01-30)
 
 
-##New Project Setup
-1. **Decipher:** Make a new project - MASTER. Duplicate project for – SCRIPTING & – STAGING.
-2. **Decipher:** Change url. Menu > Project Settings. XXXXXX_staging XXXXXX_scripting.
-3. **Slack:** Make group, add project url URL_staging, add Fireballers.
-4. **Github:** Make repository. Add link at fireball organization page.
-5. **Github:** Go to the your projects DIR and do:
-```
-git copy https://github.com/fireball-conversation-design/fireball-boilerplate-v2 https://github.com/fireball-conversation-design/XXXXXXXXX
-git clone https://github.com/fireball-conversation-design/XXXXXXXXX
-```
-will only work if you did: `sudo gem install git-copy`
-more info: https://github.com/cybertk/git-copy
+## Result:
 
-6. **Terminal:** `cd XXXX-XXXXX` // new folder with the new repo
+![alt tag](https://github.com/robinpiets/d3js-course/blob/master/img/d3js-first.gif?raw=true)
+![alt tag](https://github.com/robinpiets/d3js-course/blob/master/img/d3js-second.gif?raw=true)
 
-7. **Editor:** Edit project.json ⚠️⚠️⚠️
-8. **Editor:** Edit Jenkinsfile ⚠️⚠️⚠️
-9. **Decipher:** Get scripting.xml
-10. **Editor:** Edit survey.xml
-    * change project name
-    * check sections: development settings, language settings, continue buttons (should be after sample sources)
-    * check sections: rotate device & evaluation
-11. **Terminal:**: Jenkins sync at jenkins.fireball.amsterdam    
-12. **Terminal:**
-    * `npm install`
-    * `git add .`  
-    * `git commit`   
-    * `git push`
-13. **Github:** Remove all default labels & branches    
-14. **Terminal:** git labelmaker
-
-15. **Github:** Add issue with links, template:
-``` 
-**Test links**
-YES hidden screens
-http://survey.epiphany-rbc.com/survey/selfserve/53c/161216?
-NO hidden screens
-http://survey.epiphany-rbc.com/survey/selfserve/53c/161216?list=2
-
-**Developer links**
-YES hidden screens
-http://survey.epiphany-rbc.com/survey/selfserve/53c/161216_staging?
-NO hidden screens
-http://survey.epiphany-rbc.com/survey/selfserve/53c/161216_staging?list=2
-```
-
-##Boilerplate Installation
-- `npm install`
-- `gulp`
-
-#TODO:
-
-- add list of all gulp commands
+Examples:
+1. https://github.com/d3/d3/wiki/Gallery
+2. http://bl.ocks.org/dbuezas/9306799
+3a. http://javascript.tutorialhorizon.com/2015/03/05/creating-an-animated-ring-or-pie-chart-in-d3js/
+3b. http://jsfiddle.net/thmain/xL48ru9k/2/
