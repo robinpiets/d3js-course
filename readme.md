@@ -1,4 +1,4 @@
-#D3JS Course @ Codaisseur (2017-01-30)
+#D3JS Course @ Codaisseur
 
 ## Result:
 
